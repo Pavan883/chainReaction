@@ -6,19 +6,21 @@ const LoginPage = (props) => {
     const signupWasClickedCallback = (data) => {
       console.log(data);
       alert('Signup callback, see log on the console to see the data.');
+      
     };
     const loginWasClickedCallback = (data) => {
       console.log(data);
       alert('Login callback, see log on the console to see the data.');
+      props.setCredentials(data);
     };
     const recoverPasswordWasClickedCallback = (data) => {
       console.log(data);
       alert('Recover password callback, see log on the console to see the data.');
     };
     return (
-        <div style={{marginLeft: '250px'}}>
+        <div style={{margin: 'auto',width: '50%'}}>
             <ReactSignupLoginComponent
-                title="My awesome company"
+                title="Login"
                 handleSignup={signupWasClickedCallback}
                 handleLogin={loginWasClickedCallback}
                 handleRecoverPassword={recoverPasswordWasClickedCallback}

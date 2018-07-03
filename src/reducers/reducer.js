@@ -4,8 +4,8 @@ let initialState = {
   currentProfilePage : "UserProfile",
   isUserLoggedIn : false,
   editForm: false,
-  viewjobList:[{jobId:'007',jobName:'Agent',jobDesc:'Cannot be disclosed',jobSkills:'LOL',interviewDate:'3/7/2018',jobLocation:'Hyderabad'},
-           {jobId:'008',jobName:'Henchman',jobDesc:'You dont want to know',jobSkills:'LOL',interviewDate:'4/7/2018',jobLocation:'village near Chennai'}]
+  viewjobList:[{jobId:'007',jobName:'Agent',jobDesc:'Cannot be disclosed',jobSkills:['LOL','LOL','LOL','LOL'],interviewDate:'3/7/2018',jobLocation:'Hyderabad'},
+           {jobId:'008',jobName:'Henchman',jobDesc:'You dont want to know',jobSkills:['LOL','LOL','LOL','LOL'],interviewDate:'4/7/2018',jobLocation:'village near Chennai'}]
 };
 export default (state = initialState, action) => {
   let nextState = {...state};

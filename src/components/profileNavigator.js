@@ -13,12 +13,13 @@ class ProfileNavigator extends Component {
       case "UserProfile":
         currentPage = <UserProfilePage {...this.props}/>;
         break;
-      case "ViewJobs":
-        currentPage = <ViewJobs {...this.props}/>;
-        break;
-      case "ApplyJobs":
-        currentPage = <ApplyJobs {...this.props}/>;
-        break;
+      // case "ViewJobs":
+      //   currentPage = <ViewJobs {...this.props}/>;
+      //   break;
+      // case "ApplyJobs":
+      //   currentPage = <ApplyJobs {...this.props}/>;
+      //   break;
+      default:   currentPage = <UserProfilePage {...this.props}/>;
     }
     return(currentPage);
   }

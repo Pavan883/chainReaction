@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
+import ViewJobs from './viewJobs';
+import ApplyJobs from './applyJobs';
 
 const required = value => (value ? undefined : 'Required')
 const maxLength = max => value =>
@@ -33,6 +35,12 @@ class UserProfilePage extends Component {
   render() {
     const {handleSubmit, load, submitting,simpleReducer} = this.props;
     console.log(this.props);
+    if(simpleReducer.currentProfilePage === "ViewJobs"){
+      return <ViewJobs {...this.props}/>;
+    }
+    if(simpleReducer.currentProfilePage === "ApplyJobs"){
+      return <ApplyJobs {...this.props}/>;
+    }
     const save=(data)=>{
       this.props.onSubmithandler(data);
     }

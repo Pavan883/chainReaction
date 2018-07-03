@@ -35,6 +35,8 @@ const mapDispatchToProps = dispatch => ({
  onSubmithandler: (payload) => dispatch(actions.onSubmithandler(payload)),
  setUserLoggedIn: () => dispatch(actions.setUserLoggedIn()),
  editForm: () => dispatch(actions.editForm()),
+ setCurrentProfilePage: (payload) => dispatch(actions.setCurrentProfilePage(payload)),
+
 });
 
 //const mapDispatchToProps = dispatch => (bindActionCreators({actions},dispatch));

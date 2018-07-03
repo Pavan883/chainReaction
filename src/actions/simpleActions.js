@@ -39,3 +39,10 @@ export const setPassword = (payload) => dispatch => {
      payload: true
     })
    }
+
+ export const setCurrentProfilePage = (payload) => dispatch => {
+    dispatch({
+     type: 'SET_CURRENT_PROFILE_PAGE',
+     payload: payload
+    })
+   }

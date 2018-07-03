@@ -20,6 +20,8 @@ class App extends Component {
           <h1 className="App-title">Verizon Job Portal</h1>
         </header>
         <Navigator {...this.props}/>
+        <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
       </div>
     );
   }
@@ -31,6 +33,8 @@ const mapDispatchToProps = dispatch => ({
  simpleAction: () => dispatch(actions.simpleAction()),
  setCredentials: (payload) => dispatch(actions.setCredentials(payload)),
  onSubmithandler: (payload) => dispatch(actions.onSubmithandler(payload)),
+ setUserLoggedIn: () => dispatch(actions.setUserLoggedIn()),
+ editForm: () => dispatch(actions.editForm()),
 });
 
 //const mapDispatchToProps = dispatch => (bindActionCreators({actions},dispatch));

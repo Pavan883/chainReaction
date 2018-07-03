@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Field, reduxForm} from 'redux-form'
+import {Field, reduxForm} from 'redux-form';
 
 const required = value => (value ? undefined : 'Required')
 const maxLength = max => value =>
@@ -29,99 +29,132 @@ const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
   </div>
 )
 
-const UserProfile = props => {
-  const {handleSubmit, submitting} = props;
-  console.log(props);
-  const save=(data)=>{
-      props.onSubmithandler(data);
-  } 
-  return (
-    <form onSubmit={handleSubmit(save)}>
-      <div>
-        <label>First Name</label>
+class UserProfilePage extends Component {
+  render() {
+    const {handleSubmit, load, submitting,simpleReducer} = this.props;
+    console.log(this.props);
+    const save=(data)=>{
+      this.props.onSubmithandler(data);
+    }
+    if((simpleReducer.userProfileData!== null && Object.keys(simpleReducer.userProfileData).length > 0) && simpleReducer.editForm === false ){
+
+      return(<div class="container">
+      <div class="row">
+          <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+              <div class="well details">
+                  <div class="col-sm-12">
+                      <div class="col-xs-12 col-sm-8">
+                          <h2 style= {{textDecoration:'underline'}}>{simpleReducer.userProfileData.firstName} {simpleReducer.userProfileData.lastName}</h2>
+                          <a onClick={this.props.editForm} style= {{textDecoration:'underline'}}>Edit details</a>
+                          <p><strong>Email: </strong>{simpleReducer.userProfileData.email} </p>
+                          <p><strong>Age: </strong>{simpleReducer.userProfileData.age} </p>
+                          <p><strong>Sex: </strong>{simpleReducer.userProfileData.sex} </p>
+                          <p class="text-center skills"><strong>Skills</strong></p>
+                          <div class="skillLine"><div class="skill pull-left">HTML5</div></div>
+                          <div class="skillLine"><div class="skill pull-left">C#</div></div>
+                          <div class="skillLine"><div class="skill pull-left">jQuery</div></div>
+                          <div class="skillLine"><div class="skill pull-left">SQL</div></div>
+                          <div class="skillLine"><div class="skill pull-left">CSS</div></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>);
+
+}
+
+    return (
+
+      <form onSubmit={handleSubmit(save)}>
         <div>
-          <Field
-            name="firstName"
-            component={renderField}
-            type="text"
-            placeholder="First Name"
-            validate={required}
-          />
+          <label>First Name</label>
+          <div>
+            <Field
+              name="firstName"
+              component={renderField}
+              type="text"
+              placeholder="First Name"
+              validate={required}
+              value={simpleReducer.userProfileData && simpleReducer.userProfileData.firstName?simpleReducer.userProfileData.firstName:''}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <label>Last Name</label>
         <div>
-          <Field
-            name="lastName"
-            component={renderField}
-            type="text"
-            placeholder="Last Name"
-            validate={required}
-          />
+          <label>Last Name</label>
+          <div>
+            <Field
+              name="lastName"
+              component={renderField}
+              type="text"
+              placeholder="Last Name"
+              validate={required}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <label>Email</label>
         <div>
-          <Field
-            name="email"
-            component={renderField}
-            type="email"
-            placeholder="Email"
-            validate={email}
-          />
+          <label>Email</label>
+          <div>
+            <Field
+              name="email"
+              component={renderField}
+              type="email"
+              placeholder="Email"
+              validate={email}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-      <Field
-        name="age"
-        type="number"
-        component={renderField}
-        label="Age"
-        validate={[number, minValue18]}
-        warn={tooOld}
-      />
-      </div>
-      <div>
-        <label>Sex</label>
         <div>
-          <label>
-            <Field name="sex" component="input" type="radio" value="male" />
-            {' '}
-            Male
-          </label>
-          <label>
-            <Field name="sex" component="input" type="radio" value="female" />
-            {' '}
-            Female
-          </label>
+        <Field
+          name="age"
+          type="number"
+          component={renderField}
+          label="Age"
+          validate={[number, minValue18]}
+          warn={tooOld}
+        />
         </div>
-      </div>
-      <div>
-        <label htmlFor="employed">Employed</label>
         <div>
-          <Field
-            name="employed"
-            id="employed"
-            component="input"
-            type="checkbox"
-          />
+          <label>Sex</label>
+          <div>
+            <label>
+              <Field name="sex" component="input" type="radio" value="male" />
+              {' '}
+              Male
+            </label>
+            <label>
+              <Field name="sex" component="input" type="radio" value="female" />
+              {' '}
+              Female
+            </label>
+          </div>
         </div>
-      </div>
-      <div>
-        <label>Notes</label>
         <div>
-          <Field name="notes" component="textarea" />
+          <label htmlFor="employed">Employed</label>
+          <div>
+            <Field
+              name="employed"
+              id="employed"
+              component="input"
+              type="checkbox"
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <button type="submit" disabled={submitting}>Submit</button>
-      </div>
-    </form>
-  )
+        <div>
+          <label>Notes</label>
+          <div>
+            <Field name="notes" component="textarea" />
+          </div>
+        </div>
+        <div>
+          <button type="submit" disabled={submitting}>Submit</button>
+        </div>
+      </form>
+
+    )
+  }
 }
 
 export default reduxForm({
   form: 'simple' // a unique identifier for this form
-})(UserProfile);
+})(UserProfilePage);

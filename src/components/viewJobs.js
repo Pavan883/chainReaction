@@ -14,7 +14,7 @@ export default class ViewJobs extends Component{
       return(
         <div class="">
           <div style={{width:'60%', display:'inline', padding:'5px', float:'left', borderLeft:'1px solid blue', borderBottom:'1px solid blue', height: '200px'}}>
-            <div><span>Job Id</span>|<span>{job.jobId}</span></div>
+            <div><span># <b>Job Id</b></span>|<span>{job.jobId}</span></div>
             <div>
               <p><b>Job Name</b> : {job.name}</p>
               <p><b>Job Description</b> : {job.description}</p>

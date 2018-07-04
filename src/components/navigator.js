@@ -20,9 +20,9 @@ switch(this.props.simpleReducer.currentPage){
   return(<div>
       <div>
         <div className="nav-bar-custm">
-          <a class="active" onClick={()=>this.props.setCurrentProfilePage("UserProfile")}>My Profile</a>
-          <a onClick={()=>this.props.setCurrentProfilePage("ViewJobs")}>Jobs Applied</a>
-          <a onClick={()=>this.props.setCurrentProfilePage("ApplyJobs")}>Apply For New Job</a>
+          <a className={this.props.simpleReducer.currentProfilePage === "UserProfile" ? 'active' :''} onClick={()=>this.props.setCurrentProfilePage("UserProfile")}>My Profile</a>
+          <a className={this.props.simpleReducer.currentProfilePage === "ViewJobs" ? 'active' :''} onClick={()=>this.props.setCurrentProfilePage("ViewJobs")}>Jobs Applied</a>
+          <a className={this.props.simpleReducer.currentProfilePage === "ApplyJobs" ? 'active' :''} onClick={()=>this.props.setCurrentProfilePage("ApplyJobs")}>Apply For New Job</a>
         </div>
       </div>
       <div style={{clear:'both'}}>{currentPage}</div></div>);

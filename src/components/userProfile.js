@@ -25,8 +25,8 @@ const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
     <div>
       <input {...input} placeholder={label} type={type} />
       {touched &&
-        ((error && <span>{error}</span>) ||
-          (warning && <span>{warning}</span>))}
+        ((error && <div><span>{error}</span></div>) ||
+          (warning && <div><span>{warning}</span></div>))}
     </div>
   </div>
 )
@@ -58,8 +58,8 @@ class UserProfilePage extends Component {
                           <p><strong>Age: </strong>{simpleReducer.userProfileData.age} </p>
                           <p><strong>Sex: </strong>{simpleReducer.userProfileData.sex} </p>
                           <p class="text-center skills"><strong>Skills</strong></p>
-                          {simpleReducer.userProfileData.skillset.map((skill,index)=><div class="skillLine"><div class="skill pull-left">{skill}</div></div>)}
-                          
+                          {(simpleReducer.userProfileData.skillset!==null)?simpleReducer.userProfileData.skillset.map((skill,index)=><div class="skillLine"><div class="skill pull-left">{skill}</div></div>):""}
+
                       </div>
                   </div>
               </div>
@@ -146,9 +146,15 @@ class UserProfilePage extends Component {
           </div>
         </div>
         <div>
-          <label>Notes</label>
+        <label>Enter Skills* (please enter comma separated values)</label>
+        <div>
+          <Field name="skillset" component="textarea" />
+        </div>
+        </div>
+        <div>
+          <label>Personal Info</label>
           <div>
-            <Field name="notes" component="textarea" />
+            <Field name="personal" component="textarea" />
           </div>
         </div>
         <div>

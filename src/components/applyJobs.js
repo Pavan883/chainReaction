@@ -7,6 +7,7 @@ export default class ApplyJobs extends Component{
 
   render(){
     const viewjobList = this.props.simpleReducer.viewjobList;
+    let username = this.props.simpleReducer.userName;
     let listHTML = null;
     listHTML = viewjobList.map((job, index)=>{
       let d = new Date(job.postdate);
@@ -28,7 +29,7 @@ export default class ApplyJobs extends Component{
             </div>
           </div>
           <div style={{width:'36.6%', display:'inline', padding:'5px', float:'left', borderRight:'1px solid blue', borderBottom:'1px solid blue', height: '200px'}}>
-            <div style={{marginTop:'20px'}}><button onClick = {()=>this.props.applyJob(job["_id"])}>Apply</button></div>
+            <div style={{marginTop:'20px'}}><button onClick = {()=>this.props.applyJob({jobId:job["_id"],username:username})}>Apply</button></div>
               <div><p>INTERVIEWDATE: {interviewDate}</p></div>
           </div>
         </div>

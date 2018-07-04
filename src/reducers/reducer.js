@@ -7,7 +7,7 @@ let initialState = {
   userName:"",
   myJoblist:[],
   viewjobList:[{jobId:'007',jobName:'Agent',jobDesc:'Cannot be disclosed',jobSkills:['LOL','LOL','LOL','LOL'],interviewDate:'3/7/2018',jobLocation:'Hyderabad'},
-           {jobId:'008',jobName:'Henchman',jobDesc:'You dont want to know',jobSkills:['LOL','LOL','LOL','LOL'],interviewDate:'4/7/2018',jobLocation:'village near Chennai'}]
+           {jobId:'008',jobName:'Henchman',jobDesc:'You dont want to know',jobSkills:['LOL','LOL','LOL','LOL'],interviewDate:'4/7/2018',jobLocation:'Chennai'}]
 };
 export default (state = initialState, action) => {
   let nextState = {...state};
@@ -41,12 +41,14 @@ export default (state = initialState, action) => {
       nextState.viewjobList = action.payload;
       return nextState;
   case 'ADD_MY_JOB_LIST':
-     let appliedJobList;
-     appliedJobList = nextState.viewjobList.filter((job)=>{
-       if(job.jobId === action.payload )
-       return true;
-     });
-      nextState.myJoblist.concat(appliedJobList);
+
+    // let appliedJobList;
+     // appliedJobList = nextState.viewjobList.filter((job)=>{
+     //   if(job.jobId === action.payload )
+     //   return true;
+     // });
+      nextState.currentProfilePage = "ViewJobs";
+      nextState.myJoblist.push(action.payload);
       return nextState;
 
 

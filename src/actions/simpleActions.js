@@ -58,7 +58,13 @@ export const setPassword = (payload) => dispatch => {
    //   type: 'UPLOAD_TO_USER_PROFILE',
    //   payload: payload
    // });
-   doPost('api/candidate',payload).then((response)=>{
+   var newPayload = payload;
+   if (newPayload.skillset.length > 0){
+     let skillset = newPayload.skillset.split(',');
+     newPayload.skillset = skillset;
+   }
+   console.log(newPayload);
+   doPost('api/candidate',newPayload).then((response)=>{
      if(response.data !== "" && response.data !== null ){
        dispatch({
         type: 'UPLOAD_TO_USER_PROFILE',
@@ -113,8 +119,19 @@ export const setPassword = (payload) => dispatch => {
      }
 
   export const applyJob = (payload) => dispatch => {
+
+    doPost('api/interview',payload).then((response)=>{
+      if(response.data !== "" && response.data !== null ){
+        dispatch({
+         type: 'ADD_MY_JOB_LIST',
+         payload: response.data
+       });
+      }
+     }).catch(function (error) {
+      console.log(error);
       dispatch({
        type: 'ADD_MY_JOB_LIST',
-       payload: payload
-      })
+       payload: {}
+     });
+    });
      }

@@ -47,7 +47,7 @@ class UserProfilePage extends Component {
     if((simpleReducer.userProfileData!== null && Object.keys(simpleReducer.userProfileData).length > 0) && simpleReducer.editForm === false ){
 
       return(<div class="container">
-      <div class="row">
+      <div  className="row center-cls ">
           <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
               <div class="well details">
                   <div class="col-sm-12">
@@ -74,7 +74,7 @@ class UserProfilePage extends Component {
 
     return (
 
-      <form onSubmit={handleSubmit(save)}>
+      <form className="login-from" onSubmit={handleSubmit(save)}>
         <div>
           <label>First Name</label>
           <div>

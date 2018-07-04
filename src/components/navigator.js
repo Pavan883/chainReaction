@@ -19,11 +19,11 @@ switch(this.props.simpleReducer.currentPage){
     }
   return(<div>
       <div>
-        <ul style={{margin:'auto', width:'30%'}}>
-          <li style={{display:'inline-block', float:'left'}}><div style={{border:'2px solid black', padding:'5px', margin:'5px', cursor: 'pointer'}}><a onClick={()=>this.props.setCurrentProfilePage("UserProfile")}>My Profile</a></div></li>
-          <li style={{display:'inline-block', float:'left'}}><div style={{border:'2px solid black', padding:'5px', margin:'5px', cursor: 'pointer'}}><a onClick={()=>this.props.setCurrentProfilePage("ViewJobs")}>Jobs Applied</a></div></li>
-          <li style={{display:'inline-block', float:'left'}}><div style={{border:'2px solid black', padding:'5px', margin:'5px', cursor: 'pointer'}}><a onClick={()=>this.props.setCurrentProfilePage("ApplyJobs")}>Apply For New Job</a></div></li>
-        </ul>
+        <div className="nav-bar-custm">
+          <a class="active" onClick={()=>this.props.setCurrentProfilePage("UserProfile")}>My Profile</a>
+          <a onClick={()=>this.props.setCurrentProfilePage("ViewJobs")}>Jobs Applied</a>
+          <a onClick={()=>this.props.setCurrentProfilePage("ApplyJobs")}>Apply For New Job</a>
+        </div>
       </div>
       <div style={{clear:'both'}}>{currentPage}</div></div>);
  }

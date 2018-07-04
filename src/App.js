@@ -16,7 +16,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Verizon Job Portal</h1>
         </header>
         <Navigator {...this.props}/>
@@ -36,7 +35,8 @@ const mapDispatchToProps = dispatch => ({
  setUserLoggedIn: () => dispatch(actions.setUserLoggedIn()),
  editForm: () => dispatch(actions.editForm()),
  setCurrentProfilePage: (payload) => dispatch(actions.setCurrentProfilePage(payload)),
-
+ getNewJobs: () => dispatch(actions.getNewJobs()),
+ applyJob: (payload) => dispatch(actions.applyJob(payload)),
 });
 
 //const mapDispatchToProps = dispatch => (bindActionCreators({actions},dispatch));

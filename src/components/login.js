@@ -10,6 +10,7 @@ const LoginPage = (props) => {
       console.log(data);
       props.setCredentials(data);
       props.setUserLoggedIn();
+      props.getNewJobs();
     };
     const recoverPasswordWasClickedCallback = (data) => {
       console.log(data);

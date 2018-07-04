@@ -10,23 +10,24 @@ export default class ApplyJobs extends Component{
     let listHTML = null;
     listHTML = viewjobList.map((job, index)=>{
       return(
-        <div style={{border:'1px solid blue'}}>
+        <div class="">
           <div style={{width:'60%', display:'inline', padding:'5px', float:'left', borderLeft:'1px solid blue', borderBottom:'1px solid blue', height: '200px'}}>
-            <div><span>Job Id</span>|<span>{job.jobId}</span></div>
+            <div><span>Job Id</span>|<span>{job["_id"]}</span></div>
             <div>
-              <p><b>Job Description</b> : {job.jobDesc}</p>
+              <p><b>Job Name</b> : {job.name}</p>
+              <p><b>Job Description</b> : {job.description}</p>
               <p>SKILLS</p>
               <ul>
-              {job.jobSkills.map((skill,index)=><li style={{display:'inline-block', float:'left'}}><div style={{border:'2px solid black', padding:'5px', margin:'5px', cursor: 'pointer'}}>{skill}</div></li>)}
+              {job.skillset.map((skill,index)=><li style={{display:'inline-block', float:'left'}}><div style={{border:'2px solid black', padding:'5px', margin:'5px', cursor: 'pointer'}}>{skill}</div></li>)}
                 </ul>
               <div style={{display:'block', clear:'both'}}>
-                <p>Job Location : {job.jobLocation}</p>
+                <p>Posted By : {job.postedby}</p>
               </div>
             </div>
           </div>
           <div style={{width:'36.6%', display:'inline', padding:'5px', float:'left', borderRight:'1px solid blue', borderBottom:'1px solid blue', height: '200px'}}>
-            <div style={{marginTop:'20px'}}><button>Apply</button></div>
-              <div><p>INTERVIEWDATE: {job.interviewDate}</p></div>
+            <div style={{marginTop:'20px'}}><button onClick = {()=>this.props.applyJob(job["_id"])}>Apply</button></div>
+              <div><p>INTERVIEWDATE: {job.postdate}</p></div>
           </div>
         </div>
       );

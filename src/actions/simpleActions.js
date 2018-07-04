@@ -1,3 +1,5 @@
+import {doGet,doPost} from '../components/api';
+
 export const simpleAction = () => dispatch => {
  dispatch({
   type: 'SIMPLE_ACTION',
@@ -6,6 +8,20 @@ export const simpleAction = () => dispatch => {
 }
 
 export const setCredentials = (payload) => dispatch => {
+debugger;
+  doPost('api/getUserDetails',payload).then((response)=>{
+    dispatch({
+     type: 'SET_USER_PROFILE',
+     payload: response
+    })
+   }).catch(function (error) {
+    console.log(error);
+    dispatch({
+     type: 'SET_USER_PROFILE',
+     payload: null
+    })
+  });
+
     /* api for user details */
     dispatch({
      type: 'SET_USER_PROFILE',
@@ -46,3 +62,27 @@ export const setPassword = (payload) => dispatch => {
      payload: payload
     })
    }
+
+   export const getNewJobs = () => dispatch => {
+     doGet('api/jobs').then((response)=>{
+       console.log("Job Response");
+       console.log(response);
+       dispatch({
+        type: 'SET_VIEW_JOB_LIST',
+        payload: response.data
+       })
+      }).catch(function (error) {
+       console.log(error);
+       dispatch({
+        type: 'SET_VIEW_JOB_LIST',
+        payload: []
+       })
+     });
+     }
+
+  export const applyJob = (payload) => dispatch => {
+      dispatch({
+       type: 'ADD_MY_JOB_LIST',
+       payload: payload
+      })
+     }

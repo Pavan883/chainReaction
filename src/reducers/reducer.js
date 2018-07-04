@@ -4,6 +4,7 @@ let initialState = {
   currentProfilePage : "UserProfile",
   isUserLoggedIn : false,
   editForm: false,
+  myJoblist:[],
   viewjobList:[{jobId:'007',jobName:'Agent',jobDesc:'Cannot be disclosed',jobSkills:['LOL','LOL','LOL','LOL'],interviewDate:'3/7/2018',jobLocation:'Hyderabad'},
            {jobId:'008',jobName:'Henchman',jobDesc:'You dont want to know',jobSkills:['LOL','LOL','LOL','LOL'],interviewDate:'4/7/2018',jobLocation:'village near Chennai'}]
 };
@@ -34,6 +35,17 @@ export default (state = initialState, action) => {
       return nextState;
   case 'SET_CURRENT_PROFILE_PAGE':
       nextState.currentProfilePage = action.payload;
+      return nextState;
+  case 'SET_VIEW_JOB_LIST':
+      nextState.viewjobList = action.payload;
+      return nextState;
+  case 'ADD_MY_JOB_LIST':
+     let appliedJobList;
+     appliedJobList = nextState.viewjobList.filter((job)=>{
+       if(job.jobId === action.payload )
+       return true;
+     });
+      nextState.myJoblist.concat(appliedJobList);
       return nextState;
 
 

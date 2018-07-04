@@ -4,6 +4,7 @@ let initialState = {
   currentProfilePage : "UserProfile",
   isUserLoggedIn : false,
   editForm: false,
+  userName:"",
   myJoblist:[],
   viewjobList:[{jobId:'007',jobName:'Agent',jobDesc:'Cannot be disclosed',jobSkills:['LOL','LOL','LOL','LOL'],interviewDate:'3/7/2018',jobLocation:'Hyderabad'},
            {jobId:'008',jobName:'Henchman',jobDesc:'You dont want to know',jobSkills:['LOL','LOL','LOL','LOL'],interviewDate:'4/7/2018',jobLocation:'village near Chennai'}]
@@ -17,8 +18,8 @@ export default (state = initialState, action) => {
   case 'SET_USER_PROFILE':
       nextState.userProfileData = action.payload;
       return nextState;
-  case 'SIMPLE_ACTION2':
-      nextState.userProfileData = action.payload;
+  case 'SET_USERNAME':
+      nextState.userName = action.payload;
       return nextState;
   case 'UPLOAD_TO_USER_PROFILE':
       nextState.userProfileData = action.payload;

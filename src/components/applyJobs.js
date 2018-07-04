@@ -9,6 +9,8 @@ export default class ApplyJobs extends Component{
     const viewjobList = this.props.simpleReducer.viewjobList;
     let listHTML = null;
     listHTML = viewjobList.map((job, index)=>{
+      let d = new Date(job.postdate);
+      let interviewDate = d.getDate()  + "-" + (d.getMonth()) + "-" + d.getFullYear();
       return(
         <div class="">
           <div style={{width:'60%', display:'inline', padding:'5px', float:'left', borderLeft:'1px solid blue', borderBottom:'1px solid blue', height: '200px'}}>
@@ -27,7 +29,7 @@ export default class ApplyJobs extends Component{
           </div>
           <div style={{width:'36.6%', display:'inline', padding:'5px', float:'left', borderRight:'1px solid blue', borderBottom:'1px solid blue', height: '200px'}}>
             <div style={{marginTop:'20px'}}><button onClick = {()=>this.props.applyJob(job["_id"])}>Apply</button></div>
-              <div><p>INTERVIEWDATE: {job.postdate}</p></div>
+              <div><p>INTERVIEWDATE: {interviewDate}</p></div>
           </div>
         </div>
       );

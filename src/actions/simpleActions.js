@@ -9,11 +9,22 @@ export const simpleAction = () => dispatch => {
 
 export const setCredentials = (payload) => dispatch => {
 debugger;
-  doPost('api/getUserDetails',payload).then((response)=>{
-    dispatch({
-     type: 'SET_USER_PROFILE',
-     payload: response
-    })
+dispatch({
+ type: 'SET_USERNAME',
+ payload: payload.username
+});
+  doGet('api/candidate/'+ payload.username).then((response)=>{
+    if(response.data !== "" && response.data !== null ){
+      dispatch({
+       type: 'SET_USER_PROFILE',
+       payload: response.data
+      })
+    }else{
+      dispatch({
+       type: 'SET_USER_PROFILE',
+       payload: null
+      })
+    }
    }).catch(function (error) {
     console.log(error);
     dispatch({
@@ -35,11 +46,32 @@ export const setPassword = (payload) => dispatch => {
      payload: payload
     })
    }
+
+   export const setUsername = (payload) => dispatch => {
+       dispatch({
+        type: 'SET_USERNAME',
+        payload: payload
+       })
+      }
    export const onSubmithandler = (payload) => dispatch => {
-    dispatch({
-     type: 'UPLOAD_TO_USER_PROFILE',
-     payload: payload
-    })
+   //  dispatch({
+   //   type: 'UPLOAD_TO_USER_PROFILE',
+   //   payload: payload
+   // });
+   doPost('api/candidate',payload).then((response)=>{
+     if(response.data !== "" && response.data !== null ){
+       dispatch({
+        type: 'UPLOAD_TO_USER_PROFILE',
+        payload: response.data
+      });
+     }
+    }).catch(function (error) {
+     console.log(error);
+     dispatch({
+      type: 'UPLOAD_TO_USER_PROFILE',
+      payload: payload
+    });
+   });
    }
 
    export const editForm = () => dispatch => {

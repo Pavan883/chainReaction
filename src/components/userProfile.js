@@ -42,7 +42,7 @@ class UserProfilePage extends Component {
       return <ApplyJobs {...this.props}/>;
     }
     const save=(data)=>{
-      this.props.onSubmithandler(data);
+      this.props.onSubmithandler({...data,username:simpleReducer.userName});
     }
     if((simpleReducer.userProfileData!== null && Object.keys(simpleReducer.userProfileData).length > 0) && simpleReducer.editForm === false ){
 
@@ -58,11 +58,8 @@ class UserProfilePage extends Component {
                           <p><strong>Age: </strong>{simpleReducer.userProfileData.age} </p>
                           <p><strong>Sex: </strong>{simpleReducer.userProfileData.sex} </p>
                           <p class="text-center skills"><strong>Skills</strong></p>
-                          <div class="skillLine"><div class="skill pull-left">HTML5</div></div>
-                          <div class="skillLine"><div class="skill pull-left">C#</div></div>
-                          <div class="skillLine"><div class="skill pull-left">jQuery</div></div>
-                          <div class="skillLine"><div class="skill pull-left">SQL</div></div>
-                          <div class="skillLine"><div class="skill pull-left">CSS</div></div>
+                          {simpleReducer.userProfileData.skillset.map((skill,index)=><div class="skillLine"><div class="skill pull-left">{skill}</div></div>)}
+                          
                       </div>
                   </div>
               </div>
